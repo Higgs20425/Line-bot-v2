@@ -42,8 +42,17 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = Rsp(msg).words_rsp()
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=r))
+
+    if msg == '梗圖':
+        r = Rsp.memes_rsp()
+        image_message = ImageSendMessage(
+            original_content_url='https://i.imgur.com/tN7r7Xb.jpg',
+            preview_image_url='https://i.imgur.com/' + r + '.jpg'
+        )
+        line_bot_api.reply_message(event.reply_token, image_message)
+    else:
+        r = Rsp(msg).words_rsp()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=r))
     # image_message = ImageSendMessage(
     #     original_content_url='https://i.imgur.com/tN7r7Xb.jpg',
     #     preview_image_url='https://i.imgur.com/' + meme_id + '.jpg'
