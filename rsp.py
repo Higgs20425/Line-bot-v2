@@ -74,40 +74,40 @@ class Rsp:
             r = ''
             return r
 
-    def memes_rsp(self):
-        info = {
-            "client_id": "69ad53f1c002de2",
-            "client_secret": "fa9684e5f5a260618f2864ef28595573d86656e9",
-            "access_token": "07f8edbe1a4e1980443bae9364c761f4129d7d10",
-            "expires_in": "315360000",
-            "token_type": "bearer",
-            "refresh_token": "fb2ea2c2ad2fda105571a4f4451c89c8cd7d660f",
-            "account_username": "jack204251",
-            "account_id": 112527951
-        }
-        if self.msg == '梗圖':
-            memes_id = []
-            for page in range(100):
-                imgur_client = Imgur(info)
-                clt = imgur_client.image_ids(page)
-                clt = clt['response']['data']
-                if len(clt) == 0:
-                    break
-                for id_ in clt:
-                    memes_id.append(id_)
+    # def memes_rsp(self):
+    #     info = {
+    #         "client_id": "69ad53f1c002de2",
+    #         "client_secret": "fa9684e5f5a260618f2864ef28595573d86656e9",
+    #         "access_token": "07f8edbe1a4e1980443bae9364c761f4129d7d10",
+    #         "expires_in": "315360000",
+    #         "token_type": "bearer",
+    #         "refresh_token": "fb2ea2c2ad2fda105571a4f4451c89c8cd7d660f",
+    #         "account_username": "jack204251",
+    #         "account_id": 112527951
+    #     }
+    #     if self.msg == '梗圖':
+    #         memes_id = []
+    #         for page in range(100):
+    #             imgur_client = Imgur(info)
+    #             clt = imgur_client.image_ids(page)
+    #             clt = clt['response']['data']
+    #             if len(clt) == 0:
+    #                 break
+    #             for id_ in clt:
+    #                 memes_id.append(id_)
+    #
+    #         rand_id = random.randint(0, len(memes_id))
+    #         meme_id = memes_id[rand_id]
+    #
+    #         r = ImageSendMessage(
+    #             original_content_url='https://i.imgur.com/tN7r7Xb.jpg',
+    #             preview_image_url='https://i.imgur.com/' + meme_id + '.jpg'
+    #         )
+    #         return r
 
-            rand_id = random.randint(0, len(memes_id))
-            meme_id = memes_id[rand_id]
-
-            r = ImageSendMessage(
-                original_content_url='https://i.imgur.com/tN7r7Xb.jpg',
-                preview_image_url='https://i.imgur.com/' + meme_id + '.jpg'
-            )
-            return r
-
-    def run(self):
-        self.memes_rsp()
-        self.words_rsp()
+    # def run(self):
+    #     self.memes_rsp()
+    #     self.words_rsp()
 
 
 #if __name__ == "__main__":

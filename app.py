@@ -42,7 +42,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = Rsp(msg).run()
+    r = Rsp(msg).words_rsp()
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=r))
     # image_message = ImageSendMessage(
     #     original_content_url='https://i.imgur.com/tN7r7Xb.jpg',
