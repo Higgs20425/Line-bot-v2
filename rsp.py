@@ -67,8 +67,8 @@ class Rsp:
             for key in keys.keys():
                 if key in self.msg:
                     word = random.randint(0, len(keys[key])) - 1
-                    rsp = keys[key][word]
-                    r = TextSendMessage(text=rsp)
+                    r = keys[key][word]
+                    # r = TextSendMessage(text=rsp)
                     return r
         except KeyError as e:
             r = ''
@@ -106,7 +106,8 @@ class Rsp:
             return r
 
     def run(self):
-        self.words_rsp()
         self.memes_rsp()
+        self.words_rsp()
+
 
 #if __name__ == "__main__":
